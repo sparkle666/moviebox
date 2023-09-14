@@ -16,6 +16,7 @@ Movie Rating
 Movie Views
 
 TODO:
+- Add skeleton effect for featured image on loading. [IMPORTANT]
 - Conusume the mock for movie description and show on the side bar content.
 - Style the sidebar content with the data
 - Make the sidebar responsive on small screens.
