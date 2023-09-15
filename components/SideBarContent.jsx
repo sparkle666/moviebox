@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import useApi from '../hooks/useAPI';
+import List from "../static/images/List.png"
+import VideoGallery from "../static/images/VideoGallery.png"
+import TwoTickets from "../static/images/TwoTickets.png"
+import { convertTimeToText, formatNumber } from '../utils/numbers';
 
 const SideBarContent = ({ id }) => {
 
+  console.log(List)
   const [URL, setURL] = useState("")
   const videoURL = "https://youtu.be/8pEg8NrdL_Y?si=v_HcrIY-w6oLxD_b"
 
@@ -47,10 +52,10 @@ const SideBarContent = ({ id }) => {
             )}
           </div>
           <div>
-            <div className='movie-content-title flex-container-row'>
+            <div className='d-flex flex-row justify-content-between py-3'>
               <div className="movie-title-right flex-container-row" style={{ paddding: "1em" }}>
                 <div>
-                  {movieData.title} • {movieData.release_date} • PG-13 • {movieData.runtime}
+                  {movieData.title} • {movieData.release_date.substring(0, 4)} • PG-13 • {movieData.runtime}
                 </div>
                 <div>
                   {movieData.genres.map((genre) => (
@@ -66,23 +71,37 @@ const SideBarContent = ({ id }) => {
                 </div>
               </div>
               <div className="movie-title-left">
-                <i className="fas fa-star" style={{ color: "gold" }}> </i> 8.5 | {movieData.revenue}
+                <i className="fas fa-star" style={{ color: "gold" }}> </i> 8.5 |
+                {formatNumber(movieData.revenue)}
               </div>
             </div>
-            <div className="movie-detail flex-container-row">
-              <div className="movie-detail-right">
+            <div className="row">
+              <div className="col-lg-8 col-md-6 col-sm-12">
                 <p>{movieData.overview}</p>
                 <p>Director: <span className='text-red'>Joseph Kosinski</span></p>
                 <p>Writers:  <span className='text-red'>Jim Cash, Jack Epps Jr,  Peter Craig</span></p>
                 <p>Stars:  <span className='text-red'>Tom Cruise, Jennifer Connelly, Miles Teller </span></p>
-                <p className='flex-container-row'>
-                  <button className='btn-red'>Top rated movie #65</button>
-                  <button className='btn-red'>Awards nominations</button>
+                <p className='d-flex flex-row gap-1'>
+                  <button className='btn btn-primary color-primary' style={{ flex: 1 }}>Top rated movie #65</button>
+                  <select class="form-select " aria-label="Default select" style={{ flex: 1 }}>
+                    <option selected="">Awards nominations</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
                 </p>
               </div>
-              <div className="movie-detail-left" style={{ width: "400px" }}>
-                <button className='btn-red'>See Showtimes</button>
-                <button className='btn-light-red'>More Watch Options</button>
+              <div className="col-lg-4 col-md-6 col-sm-12 gap-2">
+                <button className='btn btn-primary w-full color-primary mb-2' style={{ width: "100%" }}>
+                  <img src={TwoTickets.src} alt="Ticket List" className='me-2' /> See Showtimes
+                </button>
+                <button className='btn btn-primary color-primary w-full color-outline mb-2' style={{ width: "100%" }}>
+                  <img src={List.src} alt="List icon" className='me-2' />
+                  More Watch Options
+                </button>
+                <div className='mb-4'>
+                  <img src={VideoGallery.src} alt="" width="100%" />
+                </div>
               </div>
             </div>
           </div>

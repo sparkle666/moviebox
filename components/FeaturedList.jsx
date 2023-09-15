@@ -2,7 +2,7 @@ import useAPI from '../hooks/useAPI';
 import imdb from "../static/images/imdb.png"
 import rotten from "../static/images/rottentomato.png"
 import Link from 'next/link';
-
+import { getRandomItemFromArray } from "../utils/numbers"
 
 const FeaturedList = () => {
   const imgBaseURL = 'https://image.tmdb.org/t/p/w500';
@@ -24,7 +24,7 @@ const FeaturedList = () => {
 
   // const all_path = data?.results.map(item => item.backdrop_path)
 
-  const results = data?.results || [];
+  const results = data?.results.slice(0, 10) || [];
 
   const extractedData = results.map((movie) => ({
     backdropPath: movie.backdrop_path,
@@ -44,19 +44,13 @@ const FeaturedList = () => {
   }
   return (
     <div>
-      {/* {extractedData ? (
-        extractedData.map((item) => (
-          <div key={item.id}>
-            <p>{item.originalTitle}</p>
-            <p>{item.posterPath}</p>
-            <p>{item.voteAverage}</p>
-            <p>{item.id}</p>
+      {isLoading && (
+        <div className='w-full d-flex ' style={{ width: "100%", height: "600px" }}>
+          <div class="spinner-grow color-primary" role="status" style={{ margin: "auto" }}>
+            <span class="visually-hidden">Loading...</span>
           </div>
-        ))
-      ) : (
-        <p> Empty</p>
-      )} */}
-
+        </div>
+      )}
       <div className="movie-list container">
         <h3 className=""> Feautured Movies</h3>
         <div className="movie-grid">
@@ -74,15 +68,24 @@ const FeaturedList = () => {
                         height: '370px'
                       }}>
                       <div className='position-absolute movie-tags d-flex flex-row justify-content-between'>
-                        <span className='badge bg-primary'>Tv Shows</span>
-                        <i className="fas fa-heart"></i>
+                        <span className='badge rounded-md text-uppercase' style={{
+                          background: "#D1D5DB",
+                          color: "black"
+                        }}>Tv Shows</span>
+                        <div className='badge bg-gray rounded-circle align-center'
+                          style={{ width: "25px", height: "25px", background: "#D1D5DB" }}>
+                          <i className="fas fa-heart" style={{
+                            marginTop: "3px",
+                            marginLeft: "-1px"
+                          }}></i>
+                        </div>
                       </div>
                     </div>
                   </Link>
                   <p className="text-50 mt-3">USA, 2016 - Current</p>
                   <p className="text-100">{movieItem.originalTitle}</p>
                   <div className="d-flex flex-row justify-content-between">
-                    <div><img src={imdb.src} alt="" /> 9.9/10</div>
+                    <div><img src={imdb.src} alt="" /> {getRandomItemFromArray()}/10</div>
                     <div><img src={rotten.src} alt="" /> 97%</div>
                   </div>
                   <p className="text-50 mt-1">Action, Adventure, Horror</p>

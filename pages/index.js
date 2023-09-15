@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import FeaturedList from "../components/FeaturedList"
+import Footer from '../components/Footer';
 
 export default function Home() {
 
@@ -25,6 +26,7 @@ export default function Home() {
       </Head>
       <main>
         <FeaturedList />
+        <Footer />
       </main>
     </div>
   );

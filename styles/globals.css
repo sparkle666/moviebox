@@ -75,6 +75,10 @@ div.movie-nav .movie-nav-item:hover {
   background-color: #BE123C1A;
   border-right: 4px solid #BE123C;
 }
+div.movie-nav-item-highlighted {
+  background-color: #BE123C1A;
+  border-right: 4px solid #BE123C;
+}
 
 div.movie-nav-card {
   width: 170px;
@@ -153,4 +157,38 @@ div.movie-nav-card {
   outline: none;
   width: 100%;
   border: none;
+}
+
+.color-primary {
+  background: #BE123C;
+}
+
+.color-secondary {
+  background: #F8E7EB66
+}
+
+.color-outline {
+  background: #ffffff66;
+  color: #BE123C;
+}
+
+.color-primary:hover {
+  background: #db2250;
+}
+
+.color-secondary:hover {
+  background: #fc709166;
+  color: #333333
+}
+
+/* Hide the element on screens smaller than 768px */
+@media (max-width: 500px) {
+  .movie-sidebar {
+    display: none;
+  }
+
+  div.movie-sidebar-content {
+    margin-left: 0px;
+    height: 100vh;
+  }
 }
