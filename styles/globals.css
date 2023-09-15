@@ -16,6 +16,10 @@ a {
   box-sizing: border-box;
 }
 
+iframe {
+  border-radius: 20px;
+}
+
 .text-50 {
   color: #9ca3af;
   font-size: 12px;
@@ -29,6 +33,10 @@ a {
   line-height: 23px;
   letter-spacing: 0px;
   text-align: left;
+}
+
+.text-red {
+  color: #BE123C;
 }
 
 div.movie-card {
@@ -47,6 +55,12 @@ div.movie-sidebar {
   height: 100vh;
   border-radius: 0px 45px 0px 0px;
   border: 1px solid #0000004D;
+  position: fixed;
+}
+
+div.movie-sidebar-content {
+  margin-left: 230px;
+  height: 100vh;
 }
 
 div.movie-nav-item {
@@ -109,4 +123,34 @@ div.movie-nav-card {
 
 .ml-1 {
   margin-left: 4px;
+}
+
+.flex-container-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+/* Buttons */
+
+.btn-red {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  background: #BE123C;
+  color: white;
+  outline: none;
+  width: 100%;
+  border: none;
+  padding: 20px;
+}
+
+.btn-light-red {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  background: rgba(190, 18, 60, 0.10);
+  outline: none;
+  width: 100%;
+  border: none;
 }

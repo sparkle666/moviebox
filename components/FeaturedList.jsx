@@ -1,9 +1,10 @@
 import useAPI from '../hooks/useAPI';
-import styles from '../styles/Home.module.css';
 import imdb from "../static/images/imdb.png"
 import rotten from "../static/images/rottentomato.png"
+import Link from 'next/link';
 
-const Content = () => {
+
+const FeaturedList = () => {
   const imgBaseURL = 'https://image.tmdb.org/t/p/w500';
   const url =
     'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc';
@@ -41,7 +42,6 @@ const Content = () => {
     width: '250px',
     height: '370px',
   }
-  console.log(imdb, rotten)
   return (
     <div>
       {/* {extractedData ? (
@@ -64,19 +64,21 @@ const Content = () => {
             {extractedData ? extractedData.map(movieItem => (
               <div class="col-lg-3 col-md-4 col-sm-6 col-12" key={movieItem.id}>
                 <div className="movie-card">
-                  <div className="movie-image position-relative"
-                    style={{
-                      backgroundImage: `url(${movieItem.posterPath})`,
-                      backgroundSize: 'cover',
-                      backgroundRepeat: 'no-repeat',
-                      width: '250px',
-                      height: '370px'
-                    }}>
-                    <div className='position-absolute movie-tags d-flex flex-row justify-content-between'>
-                      <span className='badge bg-primary'>Tv Shows</span>
-                      <i className="fas fa-heart"></i>
+                  <Link href={`/movie/${movieItem.id}`}>
+                    <div className="movie-image position-relative"
+                      style={{
+                        backgroundImage: `url(${movieItem.posterPath})`,
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                        width: '250px',
+                        height: '370px'
+                      }}>
+                      <div className='position-absolute movie-tags d-flex flex-row justify-content-between'>
+                        <span className='badge bg-primary'>Tv Shows</span>
+                        <i className="fas fa-heart"></i>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                   <p className="text-50 mt-3">USA, 2016 - Current</p>
                   <p className="text-100">{movieItem.originalTitle}</p>
                   <div className="d-flex flex-row justify-content-between">
@@ -96,4 +98,4 @@ const Content = () => {
   );
 };
 
-export default Content;
+export default FeaturedList;

@@ -5,6 +5,7 @@ const useApi = (url, options) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
